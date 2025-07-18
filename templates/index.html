@@ -1,21 +1,40 @@
 {% extends 'base.html' %}
 {% block title %}Home{% endblock %}
+
 {% block content %}
-  <a href="{{ url_for('create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-4 inline-block">+ New Post</a>
-  <div class="space-y-4">
-    {% for p in posts %}
-      <div class="bg-white p-4 rounded shadow">
-        <h2 class="text-xl font-semibold">{{ p.title }}</h2>
-        <p class="mt-2">{{ p.content[:200] }}{% if p.content|length > 200 %}…{% endif %}</p>
-        <div class="mt-4 space-x-2">
-          <a href="{{ url_for('edit', id=p.id) }}" class="text-indigo-600">Edit</a>
-          <form action="{{ url_for('delete', id=p.id) }}" method="post" class="inline-block">
-            <button type="submit" class="text-red-600">Delete</button>
-          </form>
-        </div>
-      </div>
-    {% else %}
-      <p>No posts yet.</p>
-    {% endfor %}
+  <div class="flex justify-between items-center mb-8">
+    <h1 class="text-4xl font-bold text-slate-800">Latest Posts</h1>
+    <!-- Tombol New Post sekarang ada di Navbar, tapi bisa juga ditaruh di sini jika perlu -->
   </div>
+
+  {% if posts %}
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      {% for p in posts %}
+        <article class="bg-white rounded-xl shadow-lg overflow-hidden flex flex-col hover:shadow-2xl hover:-translate-y-2">
+          <div class="p-6 flex-grow">
+            <h2 class="text-2xl font-bold text-slate-900 mb-2">
+              <a href="#" class="hover:text-blue-600">{{ p.title }}</a>
+            </h2>
+            <p class="text-slate-600 line-clamp-4">
+              {{ p.content }}
+            </p>
+          </div>
+          <div class="p-6 bg-slate-50 border-t border-slate-200 flex justify-end items-center space-x-3">
+            <a href="{{ url_for('edit', id=p.id) }}" class="text-sm font-semibold text-yellow-600 hover:text-yellow-700">Edit</a>
+            <form action="{{ url_for('delete', id=p.id) }}" method="post" class="inline-block" onsubmit="return confirm('Are you sure you want to delete this post?');">
+              <button type="submit" class="text-sm font-semibold text-red-600 hover:text-red-700">Delete</button>
+            </form>
+          </div>
+        </article>
+      {% endfor %}
+    </div>
+  {% else %}
+    <div class="text-center py-16 px-6 bg-white rounded-lg shadow-md">
+      <h2 class="text-2xl font-semibold text-slate-700">No Posts Yet!</h2>
+      <p class="text-slate-500 mt-2">Why don't you create the first one?</p>
+      <a href="{{ url_for('create') }}" class="mt-6 inline-block bg-blue-500 hover:bg-blue-600 text-white font-bold py-3 px-6 rounded-lg shadow-lg hover:shadow-xl">
+        Create New Post
+      </a>
+    </div>
+  {% endif %}
 {% endblock %}

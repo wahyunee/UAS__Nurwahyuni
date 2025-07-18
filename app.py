@@ -4,6 +4,8 @@ from flask_sqlalchemy import SQLAlchemy
 from dotenv import load_dotenv
 import pymysql
 
+from datetime import datetime
+
 # Daftarkan PyMySQL sebagai driver MySQLdb
 pymysql.install_as_MySQLdb()
 
@@ -28,6 +30,10 @@ class Post(db.Model):
     id      = db.Column(db.Integer, primary_key=True)
     title   = db.Column(db.String(150), nullable=False)
     content = db.Column(db.Text, nullable=False)
+
+@app.context_processor
+def inject_now():
+    return {'now': datetime.utcnow}
 
 # ======= CLI command =======
 @app.cli.command("init-db")
