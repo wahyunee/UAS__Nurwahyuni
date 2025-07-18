@@ -1,0 +1,25 @@
+name: CI/CD
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      # Trigger deploy ke Sevalla via hook
+      - name: Trigger Sevalla Deploy
+        run: curl -X POST ${{ secrets.SEVALLA_DEPLOY_HOOK }}

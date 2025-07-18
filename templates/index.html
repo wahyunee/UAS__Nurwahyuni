@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title %}Home{% endblock %}
+{% block content %}
+  <a href="{{ url_for('create') }}" class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded mb-4 inline-block">+ New Post</a>
+  <div class="space-y-4">
+    {% for p in posts %}
+      <div class="bg-white p-4 rounded shadow">
+        <h2 class="text-xl font-semibold">{{ p.title }}</h2>
+        <p class="mt-2">{{ p.content[:200] }}{% if p.content|length > 200 %}…{% endif %}</p>
+        <div class="mt-4 space-x-2">
+          <a href="{{ url_for('edit', id=p.id) }}" class="text-indigo-600">Edit</a>
+          <form action="{{ url_for('delete', id=p.id) }}" method="post" class="inline-block">
+            <button type="submit" class="text-red-600">Delete</button>
+          </form>
+        </div>
+      </div>
+    {% else %}
+      <p>No posts yet.</p>
+    {% endfor %}
+  </div>
+{% endblock %}

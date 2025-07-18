@@ -1,0 +1,254 @@
+    1  npm i
+    2  cd sudoku-algorithm-analysis
+    3  ls
+    4  npm i
+    5  npm run dev
+    6  ls | grep -oP '\d{9}' | sort | uniq > nim_list.txt
+    7  ls
+    8  ls | grep -oP '\d'
+    9  ls | grep -oP '\d{9}'
+   10  ls | grep -oP '\d{9}' | sort
+   11  ls | grep -oP '\d{9}' | sort | uniq
+   12  ls | grep -oP '\d{9}' | sort | uniq > nim_list.txt 
+   13  
+   14  while IFS= read -r nim; do
+   15      mkdir -p "$nim";     
+   16      mv *"$nim"* "$nim/"; done < nim_list.txt
+   17  while IFS= read -r nim; do
+   18      # Buat folder dengan nama NIM
+   19      mkdir -p "$nim"
+   20      
+   21      # Pindahkan file yang sesuai dengan NIM ke folder yang baru dibuat
+   22      mv *"$nim"* "$nim/"
+   23  done < nim_list.txt
+   24  ls | grep -oP '\d{9}' | sort | uniq > nim_list.txt
+   25  while IFS= read -r nim; do
+   26      mkdir -p "$nim";     
+   27      mv *"$nim"* "$nim/"; done < nim_list.txt
+   28  find . -maxdepth 1 -type d -not -path "." -exec bash -c '
+   29    dir="$0"
+   30    echo "Processing directory: $dir"
+   31    
+   32    # Find all .cpp files in subdirectories and move them to the parent directory
+   33    # Use -type f to ensure we only get files, not directories
+   34    find "$dir" -mindepth 2 -type f -iname "*.cpp" -print0 | 
+   35    while IFS= read -r -d "" file; do
+   36      echo "Moving file: $file to $dir/"
+   37      mv "$file" "$dir/"
+   38    done
+   39  ' {} \;
+   40  find . -maxdepth 1 -type d -not -path "." -exec bash -c '
+   41    dir="$0"
+   42    
+   43    find "$dir" -type f -iname "*.cpp" -print0 | 
+   44    while IFS= read -r -d "" file; do
+   45      if [ -r "$file" ]; then
+   46        # Extract NIM from directory name
+   47        nim=$(basename "$dir")
+   48        # Extract name using grep to get alphabetic part after NIM
+   49        filename=$(basename "$file")
+   50        # Remove the NIM prefix first
+   51        name_part=${filename#${nim}_}
+   52        # Then use grep to extract just the name part (letters and underscores)
+   53        name=$(echo "$name_part" | grep -o "^[A-Za-z_]*")
+   54        # echo "nim: $nim"
+   55        # echo "nama: $name"
+   56        echo "==start=====${file}=====" >> "D:\Extras\resources\[Collage]\Asisten\UAS\AP2_C\AP2_C\data.txt"
+   57        echo "==metadata nama: ${name}" >> "D:\Extras\resources\[Collage]\Asisten\UAS\AP2_C\AP2_C\data.txt"
+   58        echo "==metadata nim: ${nim}" >> "D:\Extras\resources\[Collage]\Asisten\UAS\AP2_C\AP2_C\data.txt"
+   59        cat "$file" >> "D:\Extras\resources\[Collage]\Asisten\UAS\AP2_C\AP2_C\data.txt"
+   60        echo "==end=====${file}=====" >> "D:\Extras\resources\[Collage]\Asisten\UAS\AP2_C\AP2_C\data.txt"
+   61        echo "" >> "|| echo "Error displaying file content" "
+   62      else
+   63        echo "WARNING: Cannot read file $file (permission denied or file does not exist)"
+   64      fi
+   65    done
+   66  ' {} \;
+   67  ls
+   68  touch hi.sh
+   69  vim hi.sh 
+   70  bash hi.sh 
+   71  vim hi.sh 
+   72  bash hi.sh 
+   73  bash hi.sh 
+   74  python MERGERDATA.py 
+   75  wintpy
+   76  winpty 
+   77  node
+   78  echo "alias python='winpty python.exe'" >> ~/.bash_profile
+   79  python
+   80  vim ~/.bash_profile 
+   81  winpty 
+   82  winpty python.exe MERGERDATA.py 
+   83  python.exe 
+   84  python3.exe 
+   85  /c/Users/NamaAnda/AppData/Local/Programs/Python/Python311/python.exe
+   86  cd /c/Users/fredl/AppData/Local/Programs/Python/Python313/python.exe
+   87   /c/Users/fredl/AppData/Local/Programs/Python/Python313/python.exe
+   88  cd  /c/Users/fredl/AppData/Local/Programs/Python/Python313/
+   89  ls
+   90  cd ..
+   91  ls
+   92  cd Python313/
+   93  ls
+   94  ls
+   95  cd ..
+   96  ls
+   97  cd Launcher/
+   98  ls
+   99  cd ~
+  100  mpv hello.mp4 
+  101  which mpv
+  102  which mpv
+  103  python MERGERDATA.py 
+  104  mpv
+  105  mpv
+  106  which mpv
+  107  /c/Users/fredl/Documents/SYSTEM/Program/mpv-x86_64-20250710-git-f471f8c/mpv
+  108  mpv.exe 
+  109  which mpv.exe
+  110  mpv.exe hello.mp4 
+  111  source  venv/Scripts/activate
+  112  ls
+  113  python suara.py 
+  114  python suara.py 
+  115  source  venv/Scripts/activate
+  116  pip install whisperx
+  117  pip install whisperx
+  118  deactivate 
+  119  pip install uv
+  120  uv venv -p 3.11 .venv
+  121  uv
+  122  uv
+  123  uv
+  124  uv venv -p 3.11 .venv
+  125  source .venv/Scripts/activate
+  126  python --version
+  127  pip install whisperx
+  128  whispwhisperx 
+  129  whisperx 
+  130  ls
+  131  uvx
+  132  uvx git+https://github.com/m-bain/whisperX.git
+  133  whisperx 
+  134  source venv/Scripts/activate
+  135  ls
+  136  python --version
+  137  touch index.html
+  138  python -m venv venv
+  139  source venv/Scripts/activate
+  140  pip install -r requirements2025.txt 
+  141  source venv/Scripts/activate
+  142     python manage.py generate_dummy_data
+  143     python manage.py generate_orders
+  144  pip install pytz
+  145     python manage.py generate_orders
+  146  python manage.py migration
+  147  python manage.py makemigrations
+  148  python manage.py migrate
+  149  python manage.py generate_dummy_data
+  150  python manage.py generate_dummy_data
+  151  python manage.py generate_dummy_data
+  152  python manage.py generate_orders --days 90 --min-orders 100 --max-orders 200
+  153  python manage.py generate_orders --days 90 --min-orders 100 --max-orders 200
+  154  python manage.py generate_orders --days 30 --min-orders 20 --max-orders 50
+  155  source venv/Scripts/activate
+  156  python manage.py runserver 0.0.0.0:8080
+  157  pip install mysqlclient
+  158  python manage.py migrate
+  159  python manage.py runserver 0.0.0.0:8080
+  160  python manage.py runserver 0.0.0.0:8080
+  161  ls
+  162  source venv/Scripts/activate
+  163  python manage.py runserver 0.0.0.0:8080
+  164  python manage.py migrate
+  165  python manage.py generate_dummy_data
+  166  choco.exe instsall scrcpy
+  167  choco.exe instsal scrcpy
+  168  choco.exe install scrcpy
+  169  source venv/Scripts/activate
+  170  python manage.py  runserver 0.0.0.0:8080
+  171  python -m venv venv
+  172  source venv/Scripts/activate
+  173  git init
+  174  gs
+  175  git status
+  176  git add .
+  177  git status
+  178  ls
+  179  git status
+  180  git init
+  181  touch requirements.txt
+  182  pip install Flask Flask-SQLAlchemy python-dotenv
+  183  pip install PyMySQL
+  184  export $(cat .env | xargs)
+  185  flask run
+  186  flask run
+  187  python -c "import flask; print(flask.__version__)"
+  188  flask run
+  189  flask run app.py 
+  190  flask run 
+  191  flash run --help
+  192  flash run --help
+  193  flash  --help
+  194  flask run --help
+  195  flask run app.py 
+  196  flask run 
+  197  export $(cat .env | xargs)
+  198  flask run 
+  199  FLASK_APP=app.py
+  200  export FLASK_APP=app.py
+  201  flask run 
+  202  pip install -r requirements.txt 
+  203  flask run 
+  204  flask run 
+  205  flask run 
+  206  flask init-db
+  207  flask init-db
+  208  flask run
+  209  git remote add origin git@github.com:beyondarip/yuni_app.git
+  210  git branch -M main
+  211  git push -u origin main
+  212  git status
+  213  git commit -m "initial"
+  214  git config --global user.email "ari2331280@itpln.ac.id"
+  215  git config --global user.name "beyondarip"
+  216  git commit -m "initial"
+  217  git remote add origin git@github.com:beyondarip/yuni_app.git
+  218  git branch -M main
+  219  git push -u origin main
+  220  git push -u origin main
+  221  gh
+  222  gh auth login
+  223  gh
+  224  gh
+  225  gh auth
+  226  gh auth login
+  227  git push
+  228     git push --set-upstream origin main
+  229  git push
+  230  git branch
+  231  git push main
+  232  git remote add origin git@github.com:beyondarip/yuni_app.git
+  233  git branch -M main
+  234  git push -u origin main
+  235  gh push
+  236  git push -u origin main
+  237  git remote remove origin
+  238  git remote add origin https://github.com/beyondarip/yuni_app.git
+  239  git branch -M main
+  240  git push -u origin main
+  241  git add .github/workflows/ci-cd.yml
+  242  git commit -m "ci: add GitHub Actions CI/CD pipeline"
+  243  git push
+  244  gs
+  245  git status
+  246  git add .github/workflows/ci-cd.yml 
+  247  git status
+  248  git commit -m "Flow 1"
+  249  git push
+  250  git add Procfile
+  251  git commit -m "chore: add Procfile to define start command"
+  252  git push
+  253  history 
+  254  history  > bash_history.txt
